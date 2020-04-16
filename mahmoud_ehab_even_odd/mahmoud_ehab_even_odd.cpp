@@ -6,15 +6,12 @@ int main() {
     cin >> n;
     int player = 0; // 0 is M's turn, 1 is E's turn
     while (true) {
+        // pick a number a to subtract from n
         if (player == 0) {
-            if (n % 2 == 0) {
-                // pick an even a to subtract from n
-                // what's the best a to pick?
-            }
+            // M's turn, so a has to be even
+            // is there a positive even integer 1 <= a <= n?
         } else {
-            if (n % 2 != 0) {
-                // pick an odd a to subtract from n
-            }
+            // E's turn, so a has to be odd
         }
     }
 
