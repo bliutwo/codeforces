@@ -2,28 +2,28 @@
 using namespace std;
 
 bool said_hello(string s) {
-    string hello = "hello";
-    bool too_soon = false;
-    int curr = 0;
-    for (char c : s) {
-        if (c == hello[curr]) {
-            curr++;
-        } else {
-            if (hello.find(c) != hello.end()) {
-                string before(hello.begin(), hello.begin() + curr);
-            }
-        }
-    }
-    return curr == hello.length();
+	string t = "hello";
+	size_t after = 0;
+	for (size_t i = 0; i < t.length(); i++) {
+		char c = t[i];
+		size_t found = s.find(c, after);
+		if (found == string::npos) {
+			return false;
+		} else {
+			after = found + 1;
+		}
+	}
+	return true;
 }
 
 int main() {
+    // solution here
     string s;
     cin >> s;
     if (said_hello(s)) {
-        cout << "YES" << endl;
-    } else {
-        cout << "NO" << endl;
-    }
+		cout << "YES" << endl;
+	} else {
+		cout << "NO" << endl;
+	}
     return 0;
 }
