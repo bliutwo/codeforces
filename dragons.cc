@@ -6,6 +6,7 @@ struct dragon {
     int y;
 };
 
+// https://stackoverflow.com/questions/1380463/sorting-a-vector-of-custom-objects
 struct less_than_key
 {
     inline bool operator() (const dragon& struct1, const dragon& struct2)
