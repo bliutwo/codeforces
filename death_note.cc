@@ -14,9 +14,12 @@ int main() {
     for (int i = 0; i < n; i++) {
         int namesToday = numNames[i];
         int pagesTurnedToday = namesToday / m;
-        position = position + namesToday;
-        if (position % m == 0 /* || namesToday % m == 0 */)
+        int x = position;
+        while (x % m != 0)
+            x++;
+        if (position % m == 0 || (position + namesToday) > x)
             pagesTurnedToday++;
+        position = position + namesToday;
         pagesTurnedEachDay[i] = pagesTurnedToday;
     }
     for (int i = 0; i < n; i++) {
