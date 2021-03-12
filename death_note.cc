@@ -9,5 +9,21 @@ int main() {
     for (int i = 0; i < n; i++) {
         cin >> numNames[i];
     }
+    int position = 0;
+    int pagesTurnedEachDay[n];
+    for (int i = 0; i < n; i++) {
+        int namesToday = numNames[i];
+        int pagesTurnedToday = 0;
+        for (int j = 0; j < namesToday; j++) {
+            position++;
+            if (position % m == 0)
+                pagesTurnedToday++;
+        }
+        pagesTurnedEachDay[i] = pagesTurnedToday;
+    }
+    for (int i = 0; i < n; i++) {
+        cout << pagesTurnedEachDay[i] << " ";
+    }
+    cout << endl;
     return 0;
 }
