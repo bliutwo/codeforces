@@ -15,7 +15,7 @@ int main() {
         int namesToday = numNames[i];
         int pagesTurnedToday = namesToday / m;
         position = position + namesToday;
-        if (position % m == 0 /* || namesToday % m == 0 */)
+        if (position % m == 0)
             pagesTurnedToday++;
         pagesTurnedEachDay[i] = pagesTurnedToday;
     }
