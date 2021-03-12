@@ -13,12 +13,10 @@ int main() {
     int pagesTurnedEachDay[n];
     for (int i = 0; i < n; i++) {
         int namesToday = numNames[i];
-        int pagesTurnedToday = 0;
-        for (int j = 0; j < namesToday; j++) {
-            position++;
-            if (position % m == 0)
-                pagesTurnedToday++;
-        }
+        int pagesTurnedToday = namesToday / m;
+        position = position + namesToday;
+        if (position % m == 0 || namesToday % m == 0)
+            pagesTurnedToday++;
         pagesTurnedEachDay[i] = pagesTurnedToday;
     }
     for (int i = 0; i < n; i++) {
