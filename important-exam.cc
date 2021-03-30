@@ -1,6 +1,23 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+int most_frequent_letter_count(string s) {
+    map<char, size_t> counts;
+    for (size_t i = 0; i < s.length(); i++) {
+        if (counts.find(s[i]) != counts.end()) {
+            counts[s[i]]++;
+        } else {
+            counts[s[i]] = 1;
+        }
+    }
+    return (*max_element(
+                begin(counts), end(counts),
+                [] (const pair<char, size_t> a, const pair<char, size_t> b) {
+                    return a.second < b.second;
+                }
+            )).second;
+}
+
 int main() {
     int n, m;
     cin >> n >> m;
@@ -11,12 +28,8 @@ int main() {
         string answer;
         cin >> answer;
         for (int j = 0; j < m; j++) {
-            answers[i] += answer[j];
+            answers[j] += answer[j];
         }
-    }
-
-    for (int i = 0; i < answers.length(); i++) {
-        cout << answers[i] << endl;
     }
 
     vector<int> scores(m);
@@ -24,9 +37,13 @@ int main() {
         cin >> scores[i];
     }
 
-    for (int i = 0; i < scores.length(); i++) {
-        cout << scores[i] << endl;
+    int score = 0;
+
+    for (int i = 0; i < m; i++) {
+        score = score + (most_frequent_letter_count(answers[i]) * scores[i]);
     }
+
+    cout << score << endl;
 
     return 0;
 }
