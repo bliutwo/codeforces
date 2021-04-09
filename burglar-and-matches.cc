@@ -19,10 +19,21 @@ int main() {
     // sort vector descending (big to small) by second element in pair
     sort(matchbox_and_matches.begin(), matchbox_and_matches.end(), sort_by_second_in_pair);
 
+    int num_matches = 0;
+
     for (int i = 0; i < m; i++) {
+        if (n == 0) break;
         pair<int, int> p = matchbox_and_matches[i];
-        cout << p.first << " " << p.second << endl;
+        if (p.first < n) {
+            num_matches = num_matches + (p.first * p.second);
+            n = n - p.first;
+        } else {
+            num_matches = num_matches + (n * p.second);
+            n = 0;
+        }
     }
+
+    cout << num_matches << endl;
 
     return 0;
 }
