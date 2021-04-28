@@ -10,9 +10,9 @@ void convert_time(string& timestring, int& h, int& m) {
                 h += 10 * digit;
             } else if (i == 1) {
                 h += digit;
-            } else if (i == 2) {
-                m += 10 * digit;
             } else if (i == 3) {
+                m += 10 * digit;
+            } else if (i == 4) {
                 m += digit;
             }
         }
@@ -28,11 +28,6 @@ int main() {
 
     convert_time(start, h1, m1);
     convert_time(end, h2, m2);
-    
-    cout << h1 << endl;
-    cout << m1 << endl;
-    cout << h2 << endl;
-    cout << m2 << endl;
 
     int time1, time2;
 
@@ -43,9 +38,6 @@ int main() {
 
     int hour   = middle / 60;
     int minute = middle % 60;
-
-    cout << hour << endl;
-    cout << minute << endl;
 
     string first = "";
     string second = "";
