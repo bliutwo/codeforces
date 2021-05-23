@@ -1,16 +1,14 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int maxInteger(int n, unordered_map<int, int>& m) {
-    if (n == 1) return 0;
-    int result = n;
-    n--;
-    result &= n;
-    while (result > 0) {
-        n--;
-        result &= n;
-    }
-    return n;
+int maxInteger(int n, int result, unordered_map<int, int>& m) {
+    if (result == 2) return 1;
+    if (result == 1) return 0;
+    if (m.find(n) != m.end()) return m[n];
+    if (result == 0) return n;
+    int ans = maxInteger(n - 1, result & (n-1), m);
+    m[n] = ans;
+    return ans;
 }
 
 int main() {
@@ -27,7 +25,7 @@ int main() {
     }
     unordered_map<int, int> m;
     for (int i = 0; i < t; i++) {
-        cout << maxInteger(testCases[i], m) << "\n";
+        cout << maxInteger(testCases[i], testCases[i], m) << "\n";
     }
     return 0;
 }
