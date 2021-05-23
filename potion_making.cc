@@ -1,20 +1,16 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// https://www.geeksforgeeks.org/c-program-find-gcd-hcf-two-numbers/
 int getGCF(int a, int b) {
-    return 1;
+    if (b == 0) return a;
+    return getGCF(b, a % b);
 }
 
 void solve(int n) {
     int d = 100;
-    if (d % n == 0) {
-        cout << d / n << "\n";
-    }
     int gcf = getGCF(d, n);
-    while (gcf > 1) {
-        gcf = getGCF(d / gcf, n / gcf);
-    }
-    cout << d << "\n";
+    cout << d / gcf << "\n";
 }
 
 int main() {
