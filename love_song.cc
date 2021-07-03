@@ -1,24 +1,20 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int solve(string s, int l, int r, map<char, int>& m,
-           map<string, int>& cache) {
-    if (l == r - 2) {
-        return m[s[l]];
-    }
-    string substring = s.substr(l, r);
-    if (cache.find(substring) != cache.end()) {
-        int lenIncrementLeft  = m[s[l]] + solve(s, l+1, r, m, cache);
-        int lenDecrementRight = m[s[r]] + solve(s, l, r-1, m, cache);
-        cache[substring] = m[s[l]] + lenIncrementLeft;
-        if (l + 1 < r) {
-            cache[substring.substr(l+1, r)] = lenIncrementLeft;
+void solve(string s, int l, int r, map<char, int>& m,
+           map<pair<int, int>, int>& cache) {
+    pair<int, int> p(l, r);
+    if (cache.find(p) != cache.end()) {
+        cout << cache[p] << "\n";
+    } else {
+        int length{};
+        for (int i = l; i < r; i++) {
+            char c = s[i];
+            length += m[c];
         }
-        if (l < r - 1) {
-            cache[substring.substr(l, r-1)] = lenDecrementRight;
-        }
+        cout << length << "\n";
+        cache[p] = length;
     }
-    return cache[substring];
 }
 
 int main() {
@@ -38,11 +34,11 @@ int main() {
         char c = alphabet[i];
         m[c] = i + 1;
     }
-    map<string, int> cache;
+    map<pair<int, int>, int> cache;
     for (int i = 0; i < q; i++) {
         int l, r;
         cin >> l >> r;
-        cout << solve(s, l-1, r, m, cache) << "\n";
+        solve(s, l-1, r, m, cache);
     }
     return 0;
 }
