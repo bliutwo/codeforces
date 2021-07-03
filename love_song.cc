@@ -1,13 +1,20 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void solve(string s, int l, int r, map<char, int>& m) {
-    int length{};
-    for (int i = l; i < r; i++) {
-        char c = s[i];
-        length += m[c];
+void solve(string s, int l, int r, map<char, int>& m,
+           map<pair<int, int>, int>& cache) {
+    pair<int, int> p(l, r);
+    if (cache.find(p) != cache.end()) {
+        cout << cache[p] << "\n";
+    } else {
+        int length{};
+        for (int i = l; i < r; i++) {
+            char c = s[i];
+            length += m[c];
+        }
+        cout << length << "\n";
+        cache[p] = length;
     }
-    cout << length << "\n";
 }
 
 int main() {
@@ -27,10 +34,11 @@ int main() {
         char c = alphabet[i];
         m[c] = i + 1;
     }
+    map<pair<int, int>, int> cache;
     for (int i = 0; i < q; i++) {
         int l, r;
         cin >> l >> r;
-        solve(s, l-1, r, m);
+        solve(s, l-1, r, m, cache);
     }
     return 0;
 }
