@@ -11,11 +11,13 @@ void solve(int n, vector<int>& slices, vector<int>& times,
         return;
     }
     for (int i = 0; i < slices.size(); i++) {
-        int remainder = n - slices[i];
-        if (remainder < 0) {
+        int remainder = n % slices[i];
+        int numThisPizza = n / slices[i];
+        int additionalTime = times[i] * numThisPizza;
+        if (remainder == 0) {
             pq.push(totalTime + times[i]);
         } else {
-            solve(remainder, slices, times, pq, totalTime + times[i]);
+            solve(remainder, slices, times, pq, totalTime + additionalTime);
         }
     }
 }
