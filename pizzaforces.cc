@@ -6,12 +6,17 @@ using namespace std;
 void solve(int n, vector<int>& slices, vector<int>& times,
            priority_queue <int, vector<int>, greater<int>>& pq,
            int totalTime) {
-    if (n <= 0) {
+    if (n == 0) {
         pq.push(totalTime);
         return;
     }
     for (int i = 0; i < slices.size(); i++) {
-        solve(n - slices[i], slices, times, pq, totalTime - times[i]);
+        int remainder = n - slices[i];
+        if (remainder < 0) {
+            pq.push(totalTime + times[i]);
+        } else {
+            solve(remainder, slices, times, pq, totalTime + times[i]);
+        }
     }
 }
 
