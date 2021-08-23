@@ -14,9 +14,9 @@ void solve(ll n) {
     ll r;
     ll c;
     ll cornerVal = first + firstSquareRootGreater;
+    cout << "cornerVal: " << cornerVal << "\n";
     if (closerToFirst) {
-        // cout << "closerToFirst\n";
-        // cout << "cornerVal: " << cornerVal << "\n";
+        cout << "closerToFirst\n";
         c = firstSquareRootGreater;
         r = firstSquareRootGreater - (cornerVal - n);
     } else {
