@@ -1,3 +1,7 @@
+# Notes
+
+These contain my notes for the problems I'm working on.
+
 ## Pizzaforces
 
 [Pizzaforces](https://codeforces.com/problemset/problem/1555/A)
@@ -73,3 +77,12 @@ for 300. how can i prune the search tree pre-emptively? how do i know when
 the path i'm taking isn't the right path?
 
 maybe i should try that greedy solution just to see what happens
+
+or maybe i should just return when n is less than 0?
+
+well, i tried that, but also it should preemptively return due to the condition
+in the for loop
+
+i just realized i'm subtracting instead of dividing, so i'm going to just divide
+
+so i got a segmentation fault...?
