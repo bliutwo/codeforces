@@ -1,9 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define ll long long;
-
-void solve(int n) {
+void solve(long long n) {
     int numDigits{};
     int numLuckyDigits{};
     while (n > 0) {
@@ -28,7 +26,7 @@ int main() {
     // Newline character is faster because endl always causes a flush operation.
     // cout << "Hello world!\n";
     // solution here
-    int n;
+    long long n;
     cin >> n;
     solve(n);
     return 0;
